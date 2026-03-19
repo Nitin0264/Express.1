@@ -1,12 +1,19 @@
-import express from "express";
+import express from "express"
 
 let app = express();
-app.get("/",(req,res) => {
-  res.send("hello there the name chauhan Nitin chauhan")
-});
 
-app.get("/var",(req,res)=> {
-  let vari  = "hi i am nitin how can i assist you"
-  res.send(vari);
+app.get("/",(req,res)=>
+{
+  res.send("hello thre i am nitin chauhan  and i am here to assist you ")
 });
-app.listen(8000, ()=> console.log("i'm working"))
+app.get("/home",(req,res)=> {
+  res.send('hello there i am going to  work here')
+})
+// dynamic routing 
+app.get('/home/:hid',(req,res)=>
+{
+  console.log(req.params)
+  res.send(`your pid is ${req.params.hid}`);
+})
+
+app.listen(8000, ()=> console.log("we are working"))
