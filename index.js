@@ -1,19 +1,12 @@
-import express from "express"
+import express from "express";
+import adminRoute from "./routes/adminRoute.js"; // Added .js
+import user from "./routes/userRoute.js";       // Added .js
 
 let app = express();
+app.use(express.json());
+app.use(express.urlencoded())
+app.set("view engine","ejs")
+app.use("/admin", adminRoute); 
+app.use("/user", user);
 
-app.get("/",(req,res)=>
-{
-  res.send("hello thre i am nitin chauhan  and i am here to assist you ")
-});
-app.get("/home",(req,res)=> {
-  res.send('hello there i am going to  work here')
-})
-// dynamic routing 
-app.get('/home/:hid',(req,res)=>
-{
-  console.log(req.params)
-  res.send(`your pid is ${req.params.hid}`);
-})
-
-app.listen(8000, ()=> console.log("we are working"))
+app.listen(8000, () => console.log('i am working'));
